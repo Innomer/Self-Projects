@@ -1,3 +1,4 @@
+from cProfile import Profile
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.response import Response
@@ -44,3 +45,9 @@ class RegisterSerializer(serializers.ModelSerializer):
     user.set_password(validated_data['password'])
     user.save()
     return user
+
+class ProfCreateUpdateSerializer(serializers.ModelSerializer):
+  class Meta:
+    model=Profile
+    fields=('streak','edStat','abt','birthDate','city','country','career',
+              'interests','communities','pp')
